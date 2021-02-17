@@ -1,4 +1,4 @@
-package ru.ZIschool.ljalikak;
+package test;
 
 public interface Oracle {
     String defineMeaningOfLife();

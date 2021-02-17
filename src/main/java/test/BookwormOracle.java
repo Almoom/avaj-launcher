@@ -1,4 +1,4 @@
-package ru.ZIschool.ljalikak;
+package test;
 
 public class BookwormOracle implements Oracle{
     @Override

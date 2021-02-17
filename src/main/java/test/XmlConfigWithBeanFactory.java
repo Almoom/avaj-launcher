@@ -1,4 +1,4 @@
-package ru.ZIschool.ljalikak;
+package test;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
