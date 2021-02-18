@@ -11,10 +11,18 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scan = new Scanner(new File("target/classes/sources/scenario.txt"));
 
+        StringBuffer sb = new StringBuffer();
+        for (FlyType a : FlyType.values()) {
+            if (sb.length() != 0) {
+                sb.append("|");
+            }
+            sb.append(a);
+        }
+
         List<String> lines = new ArrayList<>();
-        for (int i = 0; scan.hasNext();) {
+        for (int i = 0; scan.hasNext(); ) {
             String s = scan.nextLine().trim();
-            if (!s.isEmpty() && isValidLine(i, s)) {
+            if (!s.isEmpty() && isValidLine(i, s, sb.toString())) {
                 i++;
                 lines.add(s);
                 System.out.println(s);
@@ -23,14 +31,15 @@ public class Main {
 
         scan.close();
 
-        int cycle = Integer.parseInt(lines.get(0));
-        System.out.println(cycle);
+//        int cycle = Integer.parseInt(lines.get(0));
+//        System.out.println(FlyType.Baloon);
 
     }
 
-    private static boolean isValidLine(int i, String s) {
+    private static boolean isValidLine(int i, String s, String sb) {
+
         if ((i == 0 && s.matches("^\\d+"))
-                || s.matches("^\\w+\\s\\w+\\s\\d+\\s\\d+\\s\\d+$")) {
+                || s.matches("^(" + sb + ")\\s+\\w+\\s+\\d+\\s+\\d+\\s+\\d+$")) {
             return true;
         } else {
 //            throw new IOException("ALERT");
