@@ -2,11 +2,11 @@ package ru.ZIschool.ljalikak;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//cd src/main/java
 //find . -name "*.java" > sources.txt
 //javac @sources.txt
 //jar cmvf Manifest.mf myjar.jar ru/ZIschool/ljalikak/*
@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner scan = new Scanner(new File(args[0]));
+//        Scanner scan = new Scanner(new File(args[0]));
 
         StringBuffer sb = new StringBuffer();
         for (FlyType a : FlyType.values()) {
@@ -24,20 +24,20 @@ public class Main {
             sb.append(a);
         }
 
-        List<String> lines = new ArrayList<>();
-        for (int i = 0; scan.hasNext(); ) {
-            String s = scan.nextLine().trim();
-            if (!s.isEmpty() && isValidLine(i, s, sb.toString())) {
-                i++;
-                lines.add(s);
-                System.out.println(s);
-            }
-        }
+        System.out.println(sb.toString());
 
-        scan.close();
 
-//        int cycle = Integer.parseInt(lines.get(0));
-//        System.out.println(FlyType.Baloon);
+//        List<String> lines = new ArrayList<>();
+//        for (int i = 0; scan.hasNext(); ) {
+//            String s = scan.nextLine().trim();
+//            if (!s.isEmpty() && isValidLine(i, s, sb.toString())) {
+//                i++;
+//                lines.add(s);
+//                System.out.println(s);
+//            }
+//        }
+//
+//        scan.close();
 
     }
 
@@ -47,8 +47,7 @@ public class Main {
                 || s.matches("^(" + sb + ")\\s+\\w+\\s+\\d+\\s+\\d+\\s+\\d+$")) {
             return true;
         } else {
-//            throw new IOException("ALERT");
-            System.out.println("чокаво");
+            System.out.println("-=error line=-");
         }
         return false;
     }
