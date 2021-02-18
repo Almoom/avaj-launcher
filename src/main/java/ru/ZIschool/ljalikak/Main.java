@@ -7,9 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//find . -name "*.java" > sources.txt
+//javac @sources.txt
+//jar cmvf Manifest.mf myjar.jar ru/ZIschool/ljalikak/*
+//java -jar myjar.jar scenario.txt
+
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner scan = new Scanner(new File("target/classes/sources/scenario.txt"));
+        Scanner scan = new Scanner(new File(args[0]));
 
         StringBuffer sb = new StringBuffer();
         for (FlyType a : FlyType.values()) {
