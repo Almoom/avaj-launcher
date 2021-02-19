@@ -9,9 +9,19 @@ public abstract class Aircraft {
     protected Aircraft(String name, Coordinates coordinates) {
         this.name = name;
         this.coordinates = coordinates;
+        this.id = nextId();
     }
 
     private long nextId() {
-        return this.id + 1;
+        return idCounter++;
+    }
+
+    @Override
+    public String toString() {
+        return "Aircraft: { " +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates: " + coordinates.toString() +
+                " }";
     }
 }
