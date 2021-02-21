@@ -28,7 +28,8 @@ public class Main {
 
         System.out.println(scenario.getSimNum());
         System.out.println(scenario.getFlyableLogList());
-        System.out.println(HashMD5.integers.indexOf("cfcd208495d565ef66e7dff9f98764da"));
+
+
 
 //        String outputFileName = "namesJ.txt";
 //
