@@ -7,14 +7,14 @@ public abstract class DecoderMD5 {
     public static final int ERROR_NUM = -1;
     public static final String ERROR_WORD = "error";
 
-    public static Scenario decode(Scenario scenario) {
+    public static Scenario run(Scenario scenario) {
         if (scenario.getSimNum().length() <= String.valueOf(Integer.MAX_VALUE).length()) {
             return scenario;
         }
-        return decodeRun(scenario);
+        return decode(scenario);
     }
 
-    private static Scenario decodeRun(Scenario scenario) {
+    private static Scenario decode(Scenario scenario) {
         int simNum;
         ArrayList<String> flyableLogList = new ArrayList<>();
 
@@ -28,7 +28,7 @@ public abstract class DecoderMD5 {
             String[] params = line.split("\\s+");
 
             if (params.length != 5) {
-                throw new RuntimeException("Incorrect number of parameters"); //todo
+                throw new ParametersException(params);
             } else {
                 StringBuffer decodedLine = new StringBuffer();
                 String type;
@@ -40,21 +40,21 @@ public abstract class DecoderMD5 {
                     switch (type) {
                         case "Helicopter":
                             if (HashMD5.namesH.contains(params[1])) {
-                                decodedLine.append(HashMD5.namesH.indexOf(params[1])).append(' ');
+                                decodedLine.append('H').append(HashMD5.namesH.indexOf(params[1]) + 1).append(' ');
                             } else {
                                 decodedLine.append(params[1]).append(' ');
                             }
                             break;
                         case "JetPlane":
                             if (HashMD5.namesJ.contains(params[1])) {
-                                decodedLine.append(HashMD5.namesJ.indexOf(params[1])).append(' ');
+                                decodedLine.append('J').append(HashMD5.namesJ.indexOf(params[1]) + 1).append(' ');
                             } else {
                                 decodedLine.append(params[1]).append(' ');
                             }
                             break;
                         case "Baloon":
                             if (HashMD5.namesB.contains(params[1])) {
-                                decodedLine.append(HashMD5.namesB.indexOf(params[1])).append(' ');
+                                decodedLine.append('B').append(HashMD5.namesB.indexOf(params[1]) + 1).append(' ');
                             } else {
                                 decodedLine.append(params[1]).append(' ');
                             }

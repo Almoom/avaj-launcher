@@ -3,25 +3,28 @@ package ru.ZIschool.ljalikak;
 public abstract class Validator {
 
     public static void run(Scenario scenario) {
-        if (!scenario.getSimNum().matches("^\\d{0,2147483647}$"))
-            throw new RuntimeException("Incorrect number of cycles"); //todo
+        String cycles = scenario.getSimNum();
+
+        if (!cycles.matches("^\\d{0,10}$") || Long.parseLong(cycles) > Integer.MAX_VALUE) {
+            throw new CyclesException(scenario.getSimNum());
+        }
 
         for (String line : scenario.getFlyableLogList()) {
             String[] params = line.split("\\s+");
             if (params.length != 5) {
-                throw new RuntimeException("Incorrect number of parameters"); //todo
+                throw new ParametersException(params);
             } else {
                 if (!params[0].matches("^(Baloon|Helicopter|JetPlane)$")) {
-                    throw new RuntimeException("Incorrect type"); //todo
+                    throw new TypeException(params);
                 }
                 if (!params[2].matches("^\\d{0,10}$") || Long.parseLong(params[2]) > Integer.MAX_VALUE) {
-                    throw new RuntimeException("Incorrect longitude"); //todo
+                    throw new LongitudeException(params);
                 }
                 if (!params[3].matches("^\\d{0,10}$") || Long.parseLong(params[3]) > Integer.MAX_VALUE) {
-                    throw new RuntimeException("Incorrect latitude"); //todo
+                    throw new LatitudeException(params);
                 }
                 if (!params[4].matches("^\\d{1,2}|100$")) {
-                    throw new RuntimeException("Incorrect height"); //todo
+                    throw new HeightException(params);
                 }
             }
         }

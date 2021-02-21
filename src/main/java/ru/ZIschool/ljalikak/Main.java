@@ -1,11 +1,5 @@
 package ru.ZIschool.ljalikak;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-
 //cd src/main/java
 //find . -name "*.java" > sources.txt
 //javac @sources.txt
@@ -16,12 +10,12 @@ public class Main {
     public static void main(String[] args) {
 
         if (args.length != 1) {
-            throw new RuntimeException("Incorrect number of arguments"); //todo
+            throw new ArgsException(args);
         }
 
         Scenario scenario = Reader.readFileToScenario(args[0]);
 
-        scenario = DecoderMD5.decode(scenario);
+        scenario = DecoderMD5.run(scenario);
 
         Validator.run(scenario);
 
