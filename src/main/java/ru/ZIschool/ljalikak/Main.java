@@ -1,9 +1,6 @@
 package ru.ZIschool.ljalikak;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,36 +12,25 @@ import java.util.Scanner;
 //java -jar myjar.jar scenario.txt
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
-        Scanner scan = new Scanner(new File(args[0]));
+    public static void main(String[] args) {
 
-//        try(FileReader reader = new FileReader(new File(args[0])) {
-//
-//        }
+        if (args.length != 1) {
+            throw new RuntimeException("Incorrect numbers of arguments"); //todo
+        }
+
+        Reader reader = new Reader();
+        Scenario scenario = reader.readFileToScenario(args[0]);
+        System.out.println(scenario.getSimNum());
 
 //        System.out.println(AircraftFactory.newAircraft("Baloon", "ytt",1,1,1).toString());
 
-        StringBuffer sb = new StringBuffer();
-        for (FlyType a : FlyType.values()) {
-            if (sb.length() != 0) {
-                sb.append("|");
-            }
-            sb.append(a);
-        }
-
-        int counter = -1;
-        List<String> lines = new ArrayList<>();
-        while (scan.hasNext()) {
-            String s = scan.nextLine().trim();
-            if (!s.isEmpty() && counter == -1) {
-                counter = parseFirstLine(s);
-            } else if (!s.isEmpty() && isValidLine(s, sb.toString())) {
-                lines.add(s);
-                System.out.println(s);
-            }
-        }
-
-        scan.close();
+//        StringBuffer sb = new StringBuffer();
+//        for (FlyType a : FlyType.values()) {
+//            if (sb.length() != 0) {
+//                sb.append("|");
+//            }
+//            sb.append(a);
+//        }
 
     }
 
