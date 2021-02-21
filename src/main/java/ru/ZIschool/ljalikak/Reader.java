@@ -5,9 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Reader {
+public abstract class Reader {
 
-    public Scenario readFileToScenario(String path) {
+    public static Scenario readFileToScenario(String path) {
         String simNum = null;
         ArrayList<String> flyableLogList = new ArrayList<>();
 

@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 //cd src/main/java
 //find . -name "*.java" > sources.txt
@@ -14,22 +13,20 @@ import java.security.NoSuchAlgorithmException;
 //java -jar myjar.jar scenario.txt
 
 public class Main {
-    public static void main(String[] args) throws NoSuchAlgorithmException {
+    public static void main(String[] args) {
 
         if (args.length != 1) {
-            throw new RuntimeException("Incorrect numbers of arguments"); //todo
+            throw new RuntimeException("Incorrect number of arguments"); //todo
         }
 
-        Reader reader = new Reader();
-        Scenario scenario = reader.readFileToScenario(args[0]);
+        Scenario scenario = Reader.readFileToScenario(args[0]);
 
-        DecoderMD5 decoderMD5 = new DecoderMD5();
-        scenario = decoderMD5.decode(scenario);
+        scenario = DecoderMD5.decode(scenario);
+
+        Validator.run(scenario);
 
         System.out.println(scenario.getSimNum());
         System.out.println(scenario.getFlyableLogList());
-
-
 
 //        String outputFileName = "namesJ.txt";
 //
@@ -55,19 +52,4 @@ public class Main {
 
     }
 
-    private static int parseFirstLine(String s) {
-        if (s.matches("^\\d+"))
-            return Integer.parseInt(s);
-        throw new RuntimeException("");
-    }
-
-    private static boolean isValidLine(String s, String sb) {
-
-        if (s.matches("^(Baloon|Helicopter|JetPlane)\\s+\\w+\\s+\\d+\\s+\\d+\\s+(\\d{1,2}|100)$")) {
-            return true;
-        } else {
-            System.out.println("-=error line=-");
-        }
-        return false;
-    }
 }
