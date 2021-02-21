@@ -8,21 +8,19 @@ import java.util.ArrayList;
 public class Reader {
 
     public Scenario readFileToScenario(String path) {
-        int simNum = -1;
+        String simNum = null;
         ArrayList<String> flyableLogList = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            for (int i = 0; (line = br.readLine()) != null; ) {
                 if (!line.trim().isEmpty()) {
-                    if (simNum == -1) {
-                        simNum = Integer.parseInt(line);
-                        if (simNum < 0) {
-                            throw new RuntimeException("Incorrect number of simulation's cycles"); //todo
-                        }
+                    if (i == 0) {
+                        simNum = line.trim();
                     } else {
-                        flyableLogList.add(line);
+                        flyableLogList.add(line.trim());
                     }
+                    i++;
                 }
             }
 
@@ -31,5 +29,21 @@ public class Reader {
         }
 
         return new Scenario(simNum, flyableLogList);
+    }
+
+    public static ArrayList<String> readFileToArrayIntByMD5(String path) {
+        ArrayList<String> arrayIntByMD5 = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                arrayIntByMD5.add(line.trim());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return arrayIntByMD5;
     }
 }

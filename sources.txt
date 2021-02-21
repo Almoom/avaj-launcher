@@ -1,0 +1,12 @@
+./src/main/java/ru/ZIschool/ljalikak/Aircraft.java
+./src/main/java/ru/ZIschool/ljalikak/AircraftFactory.java
+./src/main/java/ru/ZIschool/ljalikak/Baloon.java
+./src/main/java/ru/ZIschool/ljalikak/Coordinates.java
+./src/main/java/ru/ZIschool/ljalikak/Flyable.java
+./src/main/java/ru/ZIschool/ljalikak/FlyType.java
+./src/main/java/ru/ZIschool/ljalikak/Helicopter.java
+./src/main/java/ru/ZIschool/ljalikak/JetPlane.java
+./src/main/java/ru/ZIschool/ljalikak/Main.java
+./src/main/java/ru/ZIschool/ljalikak/Tower.java
+./src/main/java/ru/ZIschool/ljalikak/WeatherProvider.java
+./src/main/java/ru/ZIschool/ljalikak/WeatherTower.java
