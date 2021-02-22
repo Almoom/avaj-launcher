@@ -27,7 +27,7 @@ public abstract class Reader {
     }
 
     private static Scenario readMD5FileToScenario(String path) {
-        return  null;//todo
+        return null;//todo
     }
 
     public static Scenario readFileToScenario(String path) {
@@ -82,7 +82,6 @@ public abstract class Reader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return content.toString();
+        return content.toString().replaceAll("\\s+", "");
     }
 }

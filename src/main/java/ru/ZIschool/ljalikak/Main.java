@@ -16,6 +16,7 @@ public class Main {
 
         Validator.run(scenario);
 
+        System.out.println((char)55);
         System.out.println(scenario.getSimNum());
         System.out.println(scenario.getFlyableLogList());
 

@@ -13,7 +13,7 @@ public abstract class Checker {
             throw new ArgsTypeException(args);
         }
 
-        if (new File(args[0]).exists() || Reader.readFileToString(args[0]).length() == 0){
+        if (!(new File(args[0]).exists()) || Reader.readFileToString(args[0]).length() == 0){
             throw new FileContentException(args);
         }
     }
