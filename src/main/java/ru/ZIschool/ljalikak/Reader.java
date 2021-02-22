@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Reader {
+    private static final int LENGTH_MD5_LINE_PARAMETERS = 165;
 
     public static Scenario run(String path) {
-
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
+
             while ((line = br.readLine()) != null) {
                 if (line.trim().length() != 0) {
                     if (line.trim().length() > String.valueOf(Integer.MAX_VALUE).length()) {
@@ -23,11 +24,30 @@ public abstract class Reader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return new Scenario(null, null);
     }
 
     private static Scenario readMD5FileToScenario(String path) {
-        return null;//todo
+        String content = readFileToString(path);
+        String simNum = null;
+        ArrayList<String> flyableLogList = new ArrayList<>();
+        StringBuffer sb = new StringBuffer();
+
+        for (String s : content.split("(?<=\\G.{32})")) {
+            if (simNum == null) {
+                simNum = s;
+            } else {
+                sb.append(s).append(" ");
+                if (sb.length() == LENGTH_MD5_LINE_PARAMETERS) {
+                    flyableLogList.add(sb.toString().trim());
+                    sb.delete(0, sb.length());
+                }
+            }
+        }
+        if (sb.toString().length() != 0 && !flyableLogList.contains(sb.toString())) {
+            flyableLogList.add(sb.toString().trim());
+        }
+        return new Scenario(simNum, flyableLogList);
     }
 
     public static Scenario readFileToScenario(String path) {
@@ -36,21 +56,19 @@ public abstract class Reader {
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
-            for (int i = 0; (line = br.readLine()) != null; ) {
+
+            while ((line = br.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
-                    if (i == 0) {
+                    if (simNum == null) {
                         simNum = line.trim();
                     } else {
                         flyableLogList.add(line.trim());
                     }
-                    i++;
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return new Scenario(simNum, flyableLogList);
     }
 
@@ -59,14 +77,13 @@ public abstract class Reader {
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
+
             while ((line = br.readLine()) != null) {
                 arrayIntByMD5.add(line.trim());
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return arrayIntByMD5;
     }
 

@@ -3,9 +3,7 @@ package ru.ZIschool.ljalikak;
 import java.util.ArrayList;
 
 public abstract class DecoderMD5 {
-
-    public static final int ERROR_NUM = -1;
-    public static final String ERROR_WORD = "error";
+    public static final String ERROR_WORD = "incorrectMD5";
 
     public static Scenario run(Scenario scenario) {
         if (scenario.getSimNum().length() <= String.valueOf(Integer.MAX_VALUE).length()) {
@@ -15,13 +13,13 @@ public abstract class DecoderMD5 {
     }
 
     private static Scenario decode(Scenario scenario) {
-        int simNum;
+        String simNum;
         ArrayList<String> flyableLogList = new ArrayList<>();
 
         if (HashMD5.integers.contains(scenario.getSimNum())) {
-            simNum = HashMD5.integers.indexOf(scenario.getSimNum());
+            simNum = String.valueOf(HashMD5.integers.indexOf(scenario.getSimNum()));
         } else {
-            simNum = ERROR_NUM;
+            simNum = scenario.getSimNum();
         }
 
         for (String line : scenario.getFlyableLogList()) {
@@ -60,17 +58,18 @@ public abstract class DecoderMD5 {
                             }
                             break;
                         default:
-                            decodedLine.append(ERROR_WORD).append(' ');
+                            decodedLine.append(params[0]).append(' ');
                     }
                 } else {
-                    decodedLine.append(ERROR_WORD).append(' ');
+                    decodedLine.append(params[0]).append(' ');
+                    decodedLine.append(params[1]).append(' ');
                 }
 
                 for (int i = 2; i < 5; i++) {
                     if (HashMD5.integers.contains(params[i])) {
                         decodedLine.append(HashMD5.integers.indexOf(params[i])).append(' ');
                     } else {
-                        decodedLine.append(ERROR_NUM).append(' ');
+                        decodedLine.append(params[i]).append(' ');
                     }
                 }
 
@@ -78,7 +77,7 @@ public abstract class DecoderMD5 {
             }
         }
 
-        return new Scenario(String.valueOf(simNum), flyableLogList);
+        return new Scenario(simNum, flyableLogList);
     }
 
 }
