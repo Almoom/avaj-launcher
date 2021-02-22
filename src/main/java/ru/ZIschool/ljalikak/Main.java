@@ -9,12 +9,9 @@ package ru.ZIschool.ljalikak;
 public class Main {
     public static void main(String[] args) {
 
-        if (args.length != 1) {
-            throw new ArgsException(args);
-        }
+        Checker.run(args);
 
-        Scenario scenario = Reader.readFileToScenario(args[0]);
-
+        Scenario scenario = Reader.run(args[0]);
         scenario = DecoderMD5.run(scenario);
 
         Validator.run(scenario);

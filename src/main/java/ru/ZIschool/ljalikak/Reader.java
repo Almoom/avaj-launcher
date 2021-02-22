@@ -7,6 +7,29 @@ import java.util.ArrayList;
 
 public abstract class Reader {
 
+    public static Scenario run(String path) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().length() != 0) {
+                    if (line.trim().length() > String.valueOf(Integer.MAX_VALUE).length()) {
+                        return readMD5FileToScenario(path);
+                    } else {
+                        return readFileToScenario(path);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static Scenario readMD5FileToScenario(String path) {
+        return  null;//todo
+    }
+
     public static Scenario readFileToScenario(String path) {
         String simNum = null;
         ArrayList<String> flyableLogList = new ArrayList<>();
@@ -45,5 +68,21 @@ public abstract class Reader {
         }
 
         return arrayIntByMD5;
+    }
+
+    public static String readFileToString(String path) {
+        StringBuffer content = new StringBuffer();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                content.append(line.trim());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return content.toString();
     }
 }
