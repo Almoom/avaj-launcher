@@ -18,10 +18,6 @@ public abstract class Aircraft {
 
     @Override
     public String toString() {
-        return "Aircraft: { " +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", coordinates: " + coordinates.toString() +
-                " }";
+        return this.getClass().getSimpleName() + "#" + name + "(" + id + ")";
     }
 }

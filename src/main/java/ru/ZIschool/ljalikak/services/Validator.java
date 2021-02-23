@@ -1,4 +1,6 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.services;
+
+import ru.ZIschool.ljalikak.exceptions.*;
 
 public abstract class Validator {
 

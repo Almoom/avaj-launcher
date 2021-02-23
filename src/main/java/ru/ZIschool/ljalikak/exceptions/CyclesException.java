@@ -1,4 +1,4 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.exceptions;
 
 public class CyclesException extends RuntimeException {
 

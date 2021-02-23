@@ -1,6 +1,5 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.exceptions;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class ParametersException extends RuntimeException {

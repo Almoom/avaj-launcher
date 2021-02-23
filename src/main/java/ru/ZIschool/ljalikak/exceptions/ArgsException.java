@@ -1,6 +1,4 @@
-package ru.ZIschool.ljalikak;
-
-import java.util.ArrayList;
+package ru.ZIschool.ljalikak.exceptions;
 
 public class ArgsException extends RuntimeException {
 

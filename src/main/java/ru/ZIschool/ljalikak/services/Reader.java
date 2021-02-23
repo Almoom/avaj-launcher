@@ -1,4 +1,4 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.services;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

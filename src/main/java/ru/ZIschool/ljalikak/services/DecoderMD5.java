@@ -1,9 +1,10 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.services;
+
+import ru.ZIschool.ljalikak.exceptions.ParametersException;
 
 import java.util.ArrayList;
 
 public abstract class DecoderMD5 {
-    public static final String ERROR_WORD = "incorrectMD5";
 
     public static Scenario run(Scenario scenario) {
         if (scenario.getSimNum().length() <= String.valueOf(Integer.MAX_VALUE).length()) {

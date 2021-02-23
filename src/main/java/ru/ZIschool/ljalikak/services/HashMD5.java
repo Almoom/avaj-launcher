@@ -1,4 +1,6 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.services;
+
+import ru.ZIschool.ljalikak.services.Reader;
 
 import java.util.ArrayList;
 import java.util.HashMap;

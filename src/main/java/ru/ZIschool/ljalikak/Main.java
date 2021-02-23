@@ -6,6 +6,8 @@ package ru.ZIschool.ljalikak;
 //jar cmvf Manifest.mf myjar.jar ru/ZIschool/ljalikak/*
 //java -jar myjar.jar scenario.txt
 
+import ru.ZIschool.ljalikak.services.*;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -38,7 +40,9 @@ public class Main {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-
+        WeatherTower tower = new WeatherTower();
+        Flyable flyable = AircraftFactory.newAircraft("Helicopter", "ytt",1,1,1);
+        flyable.registerTower(tower);
 //        System.out.println(AircraftFactory.newAircraft("Baloon", "ytt",1,1,1).toString());
 
     }
