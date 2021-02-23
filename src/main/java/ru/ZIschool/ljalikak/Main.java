@@ -18,33 +18,22 @@ public class Main {
 
         Validator.run(scenario);
 
-        System.out.println(scenario.getSimNum());
-        System.out.println(scenario.getFlyableLogList());
-
-//        String outputFileName = "namesJ.txt";
-//
-//        try (BufferedWriter writter = new BufferedWriter(new FileWriter(outputFileName))) {
-//            for (int i = 0; i < 100021; i++) {
-//                MessageDigest m = MessageDigest.getInstance("MD5");
-//                m.reset();
-//                m.update(("J" + i).getBytes());
-//                byte[] digest = m.digest();
-//                BigInteger bigInt = new BigInteger(1, digest);
-//                String hashtext = bigInt.toString(16);
-//                while (hashtext.length() < 32) {
-//                    hashtext = "0" + hashtext;
-//                }
-//
-//                writter.write(hashtext + "\n");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         WeatherTower tower = new WeatherTower();
-        Flyable flyable = AircraftFactory.newAircraft("Helicopter", "ytt",1,1,1);
-        flyable.registerTower(tower);
-//        System.out.println(AircraftFactory.newAircraft("Baloon", "ytt",1,1,1).toString());
 
+        for (String s : scenario.getFlyableLogList()) {
+            String[] params = s.split("\\s");
+
+            AircraftFactory.newAircraft(
+                    params[0],
+                    params[1],
+                    Integer.parseInt(params[2]),
+                    Integer.parseInt(params[3]),
+                    Integer.parseInt(params[4]))
+                    .registerTower(tower);
+        }
+
+        for (int i = Integer.parseInt(scenario.getSimNum()); i > 0; i--) {
+            tower.changeWeather();
+        }
     }
-
 }

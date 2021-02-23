@@ -12,31 +12,31 @@ public class Baloon extends Aircraft implements Flyable {
 
         switch (currentWeather) {
             case "SUN":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude() + 2,
                         coordinates.getLatitude(),
-                        coordinates.getHeight() + 4 > 100 ? 100 : coordinates.getHeight() + 4));
+                        coordinates.getHeight() + 4);
                 System.out.println(toString() + ": Let's enjoy the good weather and take some pics.");
                 break;
             case "RAIN":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude(),
-                        coordinates.getHeight() - 5));
+                        coordinates.getHeight() - 5);
                 System.out.println(toString() + ": Damn you rain! You messed up my baloon.");
                 break;
             case "FOG":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude(),
-                        coordinates.getHeight() - 3));
+                        coordinates.getHeight() - 3);
                 System.out.println(toString() + ": It's fogging. I can't see anything.");
                 break;
             case "SNOW":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude(),
-                        coordinates.getHeight() - 15));
+                        coordinates.getHeight() - 15);
                 System.out.println(toString() + ": It's snowing. We're gonna crash.");
                 break;
         }

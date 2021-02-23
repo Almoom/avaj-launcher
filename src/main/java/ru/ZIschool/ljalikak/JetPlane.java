@@ -12,31 +12,31 @@ public class JetPlane extends Aircraft implements Flyable {
 
         switch (currentWeather) {
             case "SUN":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude() + 10,
-                        coordinates.getHeight() + 2 > 100 ? 100 : coordinates.getHeight() + 2));
+                        coordinates.getHeight() + 2);
                 System.out.println(toString() + ": This is hot.");
                 break;
             case "RAIN":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude() + 5,
-                        coordinates.getHeight()));
+                        coordinates.getHeight());
                 System.out.println(toString() + ": It's raining. Better watch out for lightings.");
                 break;
             case "FOG":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude() + 1,
-                        coordinates.getHeight()));
+                        coordinates.getHeight());
                 System.out.println(toString() + ": It's fogging. I can't see anything.");
                 break;
             case "SNOW":
-                weatherTower.getWeather(new Coordinates(
+                coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude(),
-                        coordinates.getHeight() - 7));
+                        coordinates.getHeight() - 7);
                 System.out.println(toString() + ": OMG! Winter is coming!");
                 break;
         }
