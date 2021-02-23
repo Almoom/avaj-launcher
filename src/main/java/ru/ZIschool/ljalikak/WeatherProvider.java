@@ -1,5 +1,7 @@
 package ru.ZIschool.ljalikak;
 
+import ru.ZIschool.ljalikak.models.Coordinates;
+
 public class WeatherProvider {
     private static WeatherProvider weatherProvider;
     private static String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};

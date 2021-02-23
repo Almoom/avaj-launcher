@@ -1,4 +1,6 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.models;
+
+import ru.ZIschool.ljalikak.WeatherTower;
 
 public class Helicopter extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
@@ -8,7 +10,7 @@ public class Helicopter extends Aircraft implements Flyable {
     }
 
     public void updateConditions() {
-        String currentWeather = WeatherProvider.getProvider().getCurrentWeather(coordinates);
+        String currentWeather = weatherTower.getWeather(coordinates);
 
         switch (currentWeather) {
             case "SUN":

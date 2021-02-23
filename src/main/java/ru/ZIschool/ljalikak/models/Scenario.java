@@ -1,4 +1,4 @@
-package ru.ZIschool.ljalikak.services;
+package ru.ZIschool.ljalikak.models;
 
 import java.util.ArrayList;
 

@@ -6,6 +6,8 @@ package ru.ZIschool.ljalikak;
 //jar cmvf Manifest.mf myjar.jar ru/ZIschool/ljalikak/*
 //java -jar myjar.jar scenario.txt
 
+import ru.ZIschool.ljalikak.models.AircraftFactory;
+import ru.ZIschool.ljalikak.models.Scenario;
 import ru.ZIschool.ljalikak.services.*;
 
 public class Main {

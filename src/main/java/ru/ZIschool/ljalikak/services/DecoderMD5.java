@@ -1,6 +1,7 @@
 package ru.ZIschool.ljalikak.services;
 
 import ru.ZIschool.ljalikak.exceptions.ParametersException;
+import ru.ZIschool.ljalikak.models.Scenario;
 
 import java.util.ArrayList;
 

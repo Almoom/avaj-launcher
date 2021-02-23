@@ -1,5 +1,7 @@
 package ru.ZIschool.ljalikak;
 
+import ru.ZIschool.ljalikak.models.Flyable;
+
 import java.util.ArrayList;
 import java.util.List;
 

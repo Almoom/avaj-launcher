@@ -1,4 +1,4 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.models;
 
 public abstract class Aircraft {
     protected long id;

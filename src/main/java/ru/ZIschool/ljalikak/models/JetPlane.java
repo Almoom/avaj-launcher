@@ -1,43 +1,45 @@
-package ru.ZIschool.ljalikak;
+package ru.ZIschool.ljalikak.models;
 
-public class Baloon extends Aircraft implements Flyable {
+import ru.ZIschool.ljalikak.WeatherTower;
+
+public class JetPlane extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
 
-    Baloon(String name, Coordinates coordinates) {
+    JetPlane(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
 
     public void updateConditions() {
-        String currentWeather = WeatherProvider.getProvider().getCurrentWeather(coordinates);
+        String currentWeather = weatherTower.getWeather(coordinates);
 
         switch (currentWeather) {
             case "SUN":
                 coordinates = new Coordinates(
-                        coordinates.getLongitude() + 2,
-                        coordinates.getLatitude(),
-                        coordinates.getHeight() + 4);
-                System.out.println(toString() + ": Let's enjoy the good weather and take some pics.");
+                        coordinates.getLongitude(),
+                        coordinates.getLatitude() + 10,
+                        coordinates.getHeight() + 2);
+                System.out.println(toString() + ": This is hot.");
                 break;
             case "RAIN":
                 coordinates = new Coordinates(
                         coordinates.getLongitude(),
-                        coordinates.getLatitude(),
-                        coordinates.getHeight() - 5);
-                System.out.println(toString() + ": Damn you rain! You messed up my baloon.");
+                        coordinates.getLatitude() + 5,
+                        coordinates.getHeight());
+                System.out.println(toString() + ": It's raining. Better watch out for lightings.");
                 break;
             case "FOG":
                 coordinates = new Coordinates(
                         coordinates.getLongitude(),
-                        coordinates.getLatitude(),
-                        coordinates.getHeight() - 3);
+                        coordinates.getLatitude() + 1,
+                        coordinates.getHeight());
                 System.out.println(toString() + ": It's fogging. I can't see anything.");
                 break;
             case "SNOW":
                 coordinates = new Coordinates(
                         coordinates.getLongitude(),
                         coordinates.getLatitude(),
-                        coordinates.getHeight() - 15);
-                System.out.println(toString() + ": It's snowing. We're gonna crash.");
+                        coordinates.getHeight() - 7);
+                System.out.println(toString() + ": OMG! Winter is coming!");
                 break;
         }
 
@@ -51,7 +53,6 @@ public class Baloon extends Aircraft implements Flyable {
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
         weatherTower.register(this);
-        System.out.println("Tower says: " + toString() + " registered to weather tower.");
+        System.out.println("Tower says: " + this.toString() + " registered to weather tower.");
     }
-
 }
