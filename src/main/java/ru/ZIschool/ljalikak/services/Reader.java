@@ -16,10 +16,10 @@ public abstract class Reader {
 
             while ((line = br.readLine()) != null) {
                 if (line.trim().length() != 0) {
-                    if (line.trim().length() > String.valueOf(Integer.MAX_VALUE).length()) {
-                        return readMD5FileToScenario(path);
-                    } else {
+                    if (Reader.readFileToString(path).matches("^\\d+(Baloon|Helicopter|JetPlane).+")) {
                         return readFileToScenario(path);
+                    } else {
+                        return readMD5FileToScenario(path);
                     }
                 }
             }
