@@ -3,8 +3,8 @@ package ru.ZIschool.ljalikak;
 //cd src/main/java
 //find . -name "*.java" > sources.txt
 //javac @sources.txt
-//jar cmvf Manifest.mf myjar.jar ru/ZIschool/ljalikak/*
-//java -jar myjar.jar scenario.txt
+//jar cmvf Manifest.mf myJar.jar ru/ZIschool/ljalikak/*
+//java -jar myJar.jar ~/Desktop/scenario.txt
 
 import ru.ZIschool.ljalikak.models.AircraftFactory;
 import ru.ZIschool.ljalikak.models.Scenario;
