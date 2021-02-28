@@ -11,6 +11,13 @@ import ru.ZIschool.ljalikak.models.Scenario;
 import ru.ZIschool.ljalikak.services.*;
 
 public class Main {
+
+    public static final int TYPE = 0;
+    public static final int NAME = 1;
+    public static final int LONGITUDE = 2;
+    public static final int LATITUDE = 3;
+    public static final int HEIGHT = 4;
+
     public static void main(String[] args) {
 
         Checker.run(args);
@@ -26,11 +33,11 @@ public class Main {
             String[] params = s.split("\\s");
 
             AircraftFactory.newAircraft(
-                    params[0],
-                    params[1],
-                    Integer.parseInt(params[2]),
-                    Integer.parseInt(params[3]),
-                    Integer.parseInt(params[4]))
+                    params[TYPE],
+                    params[NAME],
+                    Integer.parseInt(params[LONGITUDE]),
+                    Integer.parseInt(params[LATITUDE]),
+                    Integer.parseInt(params[HEIGHT]))
                     .registerTower(tower);
         }
 
